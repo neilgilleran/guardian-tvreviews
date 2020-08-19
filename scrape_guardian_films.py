@@ -14,6 +14,13 @@ import requests
 import time
 
 
+try:
+  driver = webdriver.Chrome('chromedriver',options=options)
+  print("Webdriver loaded!")
+except:
+  print("driver did not load")
+  sys.exit()
+
 n = 1
 df = pd.DataFrame()
 column_names =['Title','Stars','DateTime']
@@ -26,13 +33,6 @@ while True:
     n = n + 1
 
   base_url = 'https://www.theguardian.com/film+tone/reviews?page='+str(n)
-  
-  try:
-    driver = webdriver.Chrome('chromedriver',options=options)
-    #print("driver loaded!")
-  except:
-    print("driver did not load")
-    break
 
   driver.get(base_url)
 
